@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+ 
+datasource db {
+  provider = "postgresql"
+  // Uses connection pooling
+  url = env("POSTGRES_PRISMA_URL")
+  // Uses direct connection, ⚠️ make sure to keep this to `POSTGRES_URL_NON_POOLING`
+  // or you'll have dangling databases from migrations
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Pin {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  description String?
+  visible     Boolean  @default(true)
+  lat         Decimal  @db.Decimal(9,6)
+  lng         Decimal  @db.Decimal(9,6)
+  accuracy    Int
+  map         Map      @relation(fields: [mapId], references: [id])
+  mapId       String
+}
+
+model Map {
+  id          String    @id @default(uuid())
+  createdAt   DateTime  @default(now())
+  name        String
+  description String?
+  public      Boolean   @default(true)
+  accessible  Boolean   @default(true)
+  expiry      DateTime?
+  pins        Pin[]
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String?
+  email     String   @unique
+  image     String?
+  createdAt DateTime @default(now())
+  maps      Map[]
+}

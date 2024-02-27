@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
-export default function Map({ lat, lng }) {
+export default function Map({ coords }) {
   const mapRef = useRef(null);
   const [geocoder, setGeocoder] = useState(null);
   const [advancedMarker, setAdvancedMarker] = useState(null);
@@ -28,7 +28,7 @@ export default function Map({ lat, lng }) {
     if (!geocoder || !advancedMarker) return;
 
     
-    geocoder.geocode({ location: {lat: lat, lng: lng} }, (results, status) => {
+    geocoder.geocode({ location: {lat: coord[0].lat, lng: coord[0].lng} }, (results, status) => {
       const { AdvancedMarkerElement } = advancedMarker;
       if (status === "OK") {
         const map = new google.maps.Map(mapRef.current, {
@@ -57,7 +57,7 @@ export default function Map({ lat, lng }) {
       }
     });
 
-  }, [geocoder, advancedMarker]);
+  }, [coords, geocoder, advancedMarker]);
   
   return <div style={{ height: "400px" }} ref={mapRef} />;
 }

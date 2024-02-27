@@ -3,7 +3,7 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 
 function continueClick(user) {
   if (user) {
-    location = "/api/auth/logout";
+    location = "/my-maps";
   } else {
     location = "/api/auth/login";
   }
