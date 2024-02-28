@@ -2,10 +2,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
-export default function Map({ coords }) {
+export default function Map({ pins }) {
   const mapRef = useRef(null);
   const [geocoder, setGeocoder] = useState(null);
   const [advancedMarker, setAdvancedMarker] = useState(null);
+
+  let coords = [];
+  pins.forEach(pin => {
+    coords.push({ lat: pin.lat, lng: pin.lng });
+  });
 
   useEffect(() => {
     const loader = new Loader({
@@ -27,37 +32,45 @@ export default function Map({ coords }) {
     // Ensure geocoder and address are available
     if (!geocoder || !advancedMarker) return;
 
+    let map;
+
+    console.log(coords);
+    if(coords.length > 0) {
+      map = new google.maps.Map(mapRef.current, {
+        center: coords[0],
+        zoom: 8,
+        mapId: "e2b7c35e4de1b560",
+      });
+    } else {
+      map = new google.maps.Map(mapRef.current, {
+        center: {lat: 47.5, lng: -53},
+        zoom: 8,
+        mapId: "e2b7c35e4de1b560",
+      });
+    }
+    const { AdvancedMarkerElement } = advancedMarker;
     
-    geocoder.geocode({ location: {lat: coord[0].lat, lng: coord[0].lng} }, (results, status) => {
-      const { AdvancedMarkerElement } = advancedMarker;
-      if (status === "OK") {
-        const map = new google.maps.Map(mapRef.current, {
-          center: results[0].geometry.location,
-          zoom: 8,
-          mapId: "e2b7c35e4de1b560",
-        });
+    console.log(coords[0]);
 
-        const marker = new AdvancedMarkerElement({
-          map: map,
-          position: results[0].geometry.location,
-        });
-
-        navigator.geolocation.getCurrentPosition(
-          (pos) => {
-            const crd = pos.coords;
-            const marker = new AdvancedMarkerElement({
-              map: map,
-              position: {lat: crd.latitude, lng: crd.longitude},
-            });
-          }
-        );
-
-      } else {
-        console.error(`Geocode was not successful for the following reason: ${status}`);
-      }
+    coords.forEach(coord => {
+      new AdvancedMarkerElement({
+        map: map,
+        position: coord,
+      });
     });
 
-  }, [coords, geocoder, advancedMarker]);
+    /*navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const crd = pos.coords;
+        const marker = new AdvancedMarkerElement({
+          map: map,
+          position: {lat: crd.latitude, lng: crd.longitude},
+        });
+      }
+    );*/
+
+
+  }, [pins, geocoder, advancedMarker]);
   
-  return <div style={{ height: "400px" }} ref={mapRef} />;
+  return <div className="flex-grow rounded-md" style={{ height: "400px" }} ref={mapRef} />;
 }
