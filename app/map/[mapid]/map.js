@@ -72,5 +72,5 @@ export default function Map({ pins }) {
 
   }, [pins, geocoder, advancedMarker]);
   
-  return <div className="flex-grow rounded-md" style={{ height: "400px" }} ref={mapRef} />;
+  return <div className="" style={{ height: "400px" }} ref={mapRef} />;
 }

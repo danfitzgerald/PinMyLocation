@@ -3,6 +3,8 @@ import Map from "./map.js"
 import PinView from "./pinview.js"
 import prisma from "@/lib/prisma.js";
 import { getSession } from '@auth0/nextjs-auth0';
+import LoggedInNavBar from "@/app/components/loggedinnavbar.js";
+import { NavBar } from "@/app/components/navbar.js";
 
 export default async function Page({ params }) {
 
@@ -37,7 +39,9 @@ export default async function Page({ params }) {
     isMapCreater = (userObj.id == map.userId)
   }
 
-  
+  if (!map.public && !isMapCreater) {
+    return <div className="text-center">No map found!</div>;
+  }
 
   const pinObjs = await prisma.pin.findMany({
     where: {
@@ -71,22 +75,26 @@ export default async function Page({ params }) {
     });
   }
   
-  return (<div className="mx-10 my-10">
-    <div className="text-xl font-bold">{map.name}</div>
-    <div className="">{map.description}</div>
-    <br />
-    <div className="flex flex-col lg:flex-row justify-center gap-x-5">
-      <Map pins={pins} />
-      <PinView pins={pins} />
-    </div>
+  return (<>
+    { user ? <LoggedInNavBar /> : <NavBar/> }
+  
+    <div className="mx-10 my-10">
+      <div className="text-xl font-bold">{map.name}</div>
+      <div className="">{map.description}</div>
+      <br />
+      <div className="lg:columns-2 lg:max-h-[400px] justify-center lg:gap-x-0">
+        <Map pins={pins} />
+        <PinView pins={pins} />
+      </div>
 
-    {
-      isMapCreater ? <div>
-        <AddPinForm mapId={mapId}/>
-      </div> : <></>
-    }
-    
-    </div>);
+      {
+        isMapCreater ? <div className="">
+          <AddPinForm mapId={mapId}/>
+        </div> : <></>
+      }
+      
+    </div>
+  </>);
     
   }
   

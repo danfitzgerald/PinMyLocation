@@ -2,7 +2,7 @@
 
 // TODO: secure this route.
 
-async function captureLocationOnSubmit(event) {
+async function captureLocationAndSubmit(event) {
   event.preventDefault();
   try {
     const pos = await new Promise((resolve, reject) => {
@@ -25,8 +25,6 @@ async function captureLocationOnSubmit(event) {
     if (resJson && resJson.success) {
       location.reload();
     }
-
-    return true;
   } catch (error) {
     console.log(error);
     return false;
@@ -39,7 +37,7 @@ export default function AddPinForm({ mapId }) {
       name="pinform" 
       method="POST" 
       action="/api/add-pin" 
-      onSubmit={captureLocationOnSubmit}
+      onSubmit={captureLocationAndSubmit}
       className="flex flex-col gap-y-2 bg-green-400 p-4 my-6"
       >
       <div className="text-xl font-bold">Create new Pin</div>

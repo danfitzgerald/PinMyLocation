@@ -18,7 +18,7 @@ export async function POST(req) {
     }
   });
 
-  await prisma.map.create({
+  const mapObj = await prisma.map.create({
     data: {
       name: mapName,
       description: description,
@@ -27,5 +27,5 @@ export async function POST(req) {
     }
   });
 
-  return Response.json({complete: true});
+  return Response.json({ complete: true, mapId: mapObj.id });
 }
