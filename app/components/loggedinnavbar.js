@@ -1,4 +1,5 @@
 import Link from "next/link"
+import SignOutButton from "./signoutbutton"
 
 const navItems = [
   { name: "My Maps", path: "/my-maps" },
@@ -14,7 +15,7 @@ export default function LoggedInNavBar() {
       </Link>
     </div>
     <div className="flex flex-row justify-center align-middle gap-x-5">
-      {navItems.map((navItem, index) => <div>
+      {navItems.map((navItem, index) => <div key={index}>
           <Link className="duration-300" href={navItem.path}>
             {navItem.name}
           </Link>
@@ -23,7 +24,8 @@ export default function LoggedInNavBar() {
 
     <div className="text-right w-1/4">
       <div>
-        <Link href="/api/auth/logout">Sign out</Link>
+        {/*<Link href="/api/auth/logout">Sign out</Link>*/}
+        <SignOutButton />
       </div>
     </div>
   </nav>)

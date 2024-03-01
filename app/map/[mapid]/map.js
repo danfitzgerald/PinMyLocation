@@ -7,11 +7,6 @@ export default function Map({ pins }) {
   const [geocoder, setGeocoder] = useState(null);
   const [advancedMarker, setAdvancedMarker] = useState(null);
 
-  let coords = [];
-  pins.forEach(pin => {
-    coords.push({ lat: pin.lat, lng: pin.lng });
-  });
-
   useEffect(() => {
     const loader = new Loader({
       apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -34,7 +29,11 @@ export default function Map({ pins }) {
 
     let map;
 
-    console.log(coords);
+    let coords = [];
+    pins.forEach(pin => {
+      coords.push({ lat: pin.lat, lng: pin.lng });
+    });
+
     if(coords.length > 0) {
       map = new google.maps.Map(mapRef.current, {
         center: coords[0],

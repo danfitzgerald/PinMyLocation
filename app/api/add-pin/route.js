@@ -2,8 +2,6 @@ import prisma from '@/lib/prisma';
 import { getSession } from '@auth0/nextjs-auth0';
 
 export async function POST(req) {
-  const failUrl     = new URL('/', req.url);
-
   const formData    = await req.formData();
   const description = formData.get('description');
   const lat         = formData.get('lat');

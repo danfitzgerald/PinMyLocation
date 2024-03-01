@@ -1,5 +1,7 @@
 "use client"
 
+import { createBigButtonClassName } from "@/app/components/bigbutton";
+
 // TODO: secure this route.
 
 async function captureLocationAndSubmit(event) {
@@ -52,11 +54,11 @@ export default function AddPinForm({ mapId }) {
 
       <input type="number" name="accuracy" hidden/>
       <input type="text" name="mapId" value={mapId} hidden readOnly/>
-      <input 
-        type="submit" 
+      <input
+        type="submit"
         value="Pin my location"
-        className="bg-blue-400 rounded-full py-2 px-4"
-        />
+        className={createBigButtonClassName({})}
+      />
     </form> 
   </>;
 }

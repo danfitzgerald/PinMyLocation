@@ -1,8 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-
-useRouter
+import BigButton, { createBigButtonClassName } from "@/app/components/bigbutton";
 
 const CREATE_MAP_API = "/api/create-map";
 
@@ -26,8 +25,6 @@ async function createNewMapSubmit(event, router) {
 export default function CreateMapForm() {
   const router = useRouter();
 
-  // oncept of PinMap (PK:id, time_created, name <string>, description <string>?
-  // , FK:owner_session_id, publically_accessible <bool>, accessible <bool>, expiry <date>?)
   return <form 
     name="createmapform"
     action={CREATE_MAP_API}
@@ -49,10 +46,10 @@ export default function CreateMapForm() {
     </div>
     
     <div className='flex flex-row justify-between mt-6'>
-      <button type="button" className="rounded-full bg-yellow-400 text-white px-4 py-1 text-center shadow-md" onClick={() => { history.back() }}>
+      <BigButton type="button" bgcolor="yellow-400" onClick={ () => history.back() }>
         Go Back
-      </button>
-      <input type="submit" className="rounded-full bg-blue-400 text-white px-4 py-1 text-center shadow-md" value="Create New Map" />
+      </BigButton>
+      <input type="submit" className={createBigButtonClassName({})} value="Create New Map" />
     </div>
   </form>
 }
