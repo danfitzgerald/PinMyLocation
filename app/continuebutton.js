@@ -1,4 +1,4 @@
-// 'use client'
+// use client
 // import { useUser } from '@auth0/nextjs-auth0/client';
 import { getSession } from '@auth0/nextjs-auth0';
 import BigLink from '@/app/components/biglink';
@@ -12,8 +12,7 @@ export default async function ContinueButton() {
   // if (error) return <BigButton width="80" height="15" bgcolor="gray-400">{`Unable to determine if you are logged in: ${error.message}`}</BigButton>;
 
   return <BigLink 
-    width="80" 
-    height="15" 
+    width="20rem"
     href={user ? "/my-maps" : "/api/auth/login"}
   >
     {user ? "Continue as " + user.name + "" : "Sign in"}

@@ -46,7 +46,7 @@ export default function CreateMapForm() {
     </div>
     
     <div className='flex flex-row justify-between mt-6'>
-      <BigButton type="button" bgcolor="yellow-400" onClick={ () => history.back() }>
+      <BigButton type="button" bgcolor="#facc15" onClick={ () => history.back() }>
         Go Back
       </BigButton>
       <input type="submit" className={createBigButtonClassName({})} value="Create New Map" />

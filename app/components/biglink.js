@@ -1,19 +1,20 @@
 import Link from "next/link"
-import { createBigButtonClassName } from "./bigbutton"
+import { createBigButtonClassName, createBigButtonStyle } from "./bigbutton"
 
 export default function BigLink({
-  width,
-  children, 
-  bgcolor="blue-500", 
+  width="auto",
+  bgcolor="rgb(59 130 246)", 
   textcolor="white",
-  px="8",
-  py="4",
+  px="2rem",
+  py="1rem",
+  my="1rem",
+  children, 
   href
 }) {
-  const className = createBigButtonClassName({ width, bgcolor, textcolor, px, py });
+  const className = createBigButtonStyle({ width, bgcolor, textcolor, px, py, my });
 
   return <Link 
-      className={className}
+      style={className}
       href={href}
     >
       {children}
