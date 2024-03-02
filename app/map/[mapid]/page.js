@@ -5,6 +5,7 @@ import prisma from "@/lib/prisma.js";
 import { getSession } from '@auth0/nextjs-auth0';
 import LoggedInNavBar from "@/app/components/loggedinnavbar.js";
 import { NavBar } from "@/app/components/navbar.js";
+import MapPinsView from "./mappinsview.js";
 
 export default async function Page({ params }) {
 
@@ -83,8 +84,9 @@ export default async function Page({ params }) {
       <div className="">{map.description}</div>
       <br />
       <div className="lg:columns-2 lg:max-h-[400px] justify-center lg:gap-x-0">
-        <Map pins={pins} />
-        <PinView pins={pins} />
+        {/*<Map pins={pins} />
+        <PinView pins={pins} />*/}
+        <MapPinsView pins={pins} />
       </div>
 
       {

@@ -2,7 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 
-export default function Map({ pins }) {
+const pinImgPath = "/pushpin.png"
+
+export default function Map({ pins, selectedPin }) {
   const mapRef = useRef(null);
   const [geocoder, setGeocoder] = useState(null);
   const [advancedMarker, setAdvancedMarker] = useState(null);
@@ -34,9 +36,11 @@ export default function Map({ pins }) {
       coords.push({ lat: pin.lat, lng: pin.lng });
     });
 
+    // Zoom to newest pin logged if there are any pins
+    // otherwise, zoom to default center.
     if(coords.length > 0) {
       map = new google.maps.Map(mapRef.current, {
-        center: coords[0],
+        center: coords[selectedPin],
         zoom: 8,
         mapId: "e2b7c35e4de1b560",
       });
@@ -49,27 +53,18 @@ export default function Map({ pins }) {
     }
     const { AdvancedMarkerElement } = advancedMarker;
     
-    console.log(coords[0]);
 
     coords.forEach(coord => {
+      const pinImg = document.createElement("img");
+      pinImg.src = pinImgPath;
+
       new AdvancedMarkerElement({
         map: map,
         position: coord,
+        content: pinImg,
       });
     });
-
-    /*navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const crd = pos.coords;
-        const marker = new AdvancedMarkerElement({
-          map: map,
-          position: {lat: crd.latitude, lng: crd.longitude},
-        });
-      }
-    );*/
-
-
-  }, [pins, geocoder, advancedMarker]);
+  }, [pins, selectedPin, geocoder, advancedMarker]);
   
   return <div className="" style={{ height: "400px" }} ref={mapRef} />;
 }

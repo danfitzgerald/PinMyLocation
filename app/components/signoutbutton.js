@@ -1,9 +1,7 @@
-"use client"
-
-import BigButton from "./bigbutton"
+import BigLink from "./biglink"
 
 export default function SignOutButton() {
-  return <BigButton px="0.5rem" py="0.5rem" my="0" onClick={() => location = "/api/auth/logout"}>
+  return <BigLink px="0.5rem" py="0.5rem" my="0" href="/api/auth/logout">
     Sign out
-  </BigButton>
+  </BigLink>
 }
