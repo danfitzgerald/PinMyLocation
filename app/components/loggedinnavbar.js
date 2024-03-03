@@ -1,14 +1,23 @@
 import Link from "next/link"
 import SignOutButton from "./signoutbutton"
+import Image from "next/image"
 
 const navItems = [
   { name: "My Maps", path: "/my-maps" },
+  { name: "My Profile", path: "/my-profile" },
 ]
 
 export default function LoggedInNavBar() {
   return (<nav className="flex items-center justify-between bg-[var(--navbar-background)] text-[#FFF67E] font-bold shadow-md py-2 px-10">
     <div className="w-1/4">
-      <Link href="/">
+      <Link href="/" className="flex flex-row items-center gap-x-2">
+        <div>
+          <Image
+            src="/pushpin.png"
+            height={32}
+            width={16}
+            />
+        </div>
         <h1 className="text-[22pt] inline-block">
           PinMyLocation
         </h1>
@@ -16,7 +25,7 @@ export default function LoggedInNavBar() {
     </div>
     <div className="flex flex-row justify-center align-middle gap-x-5">
       {navItems.map((navItem, index) => <div key={index}>
-          <Link className="duration-300" href={navItem.path}>
+          <Link className="hover:underline hover:text-green-200 duration-300" href={navItem.path}>
             {navItem.name}
           </Link>
       </div>)}
@@ -24,7 +33,6 @@ export default function LoggedInNavBar() {
 
     <div className="text-right w-1/4">
       <div>
-        {/*<Link href="/api/auth/logout">Sign out</Link>*/}
         <SignOutButton />
       </div>
     </div>

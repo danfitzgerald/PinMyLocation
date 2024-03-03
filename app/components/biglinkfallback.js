@@ -14,6 +14,8 @@ export default function BigLinkFallback({
   children,
   href
 }) {
+  // TODO: need to fix fallback color here using tailwind and 
+  // className prop (reference bigbutton.js).
   const className = createBigButtonStyle({ width, bgcolor, textcolor, px, py, my });
 
   return <div

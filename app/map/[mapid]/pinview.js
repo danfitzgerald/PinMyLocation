@@ -2,10 +2,6 @@
 
 import Image from "next/image";
 
-function selectPin(index) {
-  const pinbtn = document.getElementById(`pinbtn-${index}`);
-}
-
 function PinButton({pins, index, selected, onClick}) {
   const pin = pins[index];
   if (!selected) {
@@ -39,7 +35,7 @@ function PinButton({pins, index, selected, onClick}) {
 
 export default function PinView({ pins, selectedPin, setSelectedPin }) {
   /* flex flex-row hover:bg-green-300 duration-200"*/
-  console.log(setSelectedPin);
+  // console.log(setSelectedPin);
   return <div className="max-h-[400px] overflow-y-auto">
     {
       pins.map((pin, index) => <PinButton

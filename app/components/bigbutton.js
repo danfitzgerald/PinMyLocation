@@ -14,6 +14,7 @@ export default function BigButton({
   const className = createBigButtonStyle({width, bgcolor, textcolor, px, py, my});
 
   return <button 
+      className="bg-blue-500 hover:bg-blue-600 duration-300"
       style={className}
       onClick={onClick}
       type={type}
@@ -37,17 +38,15 @@ export function createBigButtonClassName({
    generate style elements to dynamically style buttons */
 export function createBigButtonStyle({
   width = "auto",
-  children,
   bgcolor = "rgb(59 130 246)",
   textcolor = "white",
   px = "2rem",
   py = "1rem",
   my = "1rem",
-  href
 }) {
   return {
     width: width,
-    backgroundColor: bgcolor,
+    // backgroundColor: bgcolor,
     color: textcolor,
     paddingLeft: px,
     paddingRight: px,

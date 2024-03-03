@@ -1,8 +1,9 @@
 import { withPageAuthRequired, getSession } from '@auth0/nextjs-auth0';
-import SignOutButton from '@/app/components/signoutbutton';
 import MapsView from './mapsview';
-import { NavBar } from '@/app/components/navbar';
 import BigLink from '@/app/components/biglink';
+import LoggedInNavBar from '@/app//components/loggedinnavbar';
+
+export const revalidate = 10;
 
 export default withPageAuthRequired(async function Profile({ searchParams }) {
   const { user } = await getSession();
@@ -12,15 +13,10 @@ export default withPageAuthRequired(async function Profile({ searchParams }) {
   const itemsPerPage = 10;
 
   return <div>
-    <NavBar />
+    <LoggedInNavBar />
     <div className="flex flex-col gap-y-2 mt-6 lg:mx-10">
-      <div className='columns-2 mb-6'>
-        <div className="text-xl font-bold">
-          {user.name}&apos;s maps:
-        </div>
-        <div className="text-end">
-          <SignOutButton />
-        </div>
+      <div className="text-xl font-bold mb-6">
+        {user.name}&apos;s maps:
       </div>
       
       <BigLink href="/my-maps/create-map">

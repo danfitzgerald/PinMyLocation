@@ -1,15 +1,20 @@
 import AddPinForm from "./addpinform.js";
-import Map from "./map.js"
-import PinView from "./pinview.js"
 import prisma from "@/lib/prisma.js";
 import { getSession } from '@auth0/nextjs-auth0';
 import LoggedInNavBar from "@/app/components/loggedinnavbar.js";
 import { NavBar } from "@/app/components/navbar.js";
 import MapPinsView from "./mappinsview.js";
 
-export default async function Page({ params }) {
+export const revalidate = 10;
 
-  // TODO: Verify exists and authenticated user has access.
+function MapNotFound() {
+  return <div>
+    <NavBar />
+    <div className="text-center text-xl font-bold mt-10">No map at this location or the map at this location is not public.</div>
+  </div>
+}
+
+export default async function Page({ params }) {
 
   const mapId = params.mapid;
   const map = await prisma.map.findUnique({
@@ -20,7 +25,7 @@ export default async function Page({ params }) {
   });
 
   if(!map) {
-    return <div className="text-center">No map found!</div>;
+    return <MapNotFound />;
   }
 
   let isMapCreater = false;
@@ -41,7 +46,7 @@ export default async function Page({ params }) {
   }
 
   if (!map.public && !isMapCreater) {
-    return <div className="text-center">No map found!</div>;
+    return <MapNotFound />;
   }
 
   const pinObjs = await prisma.pin.findMany({
@@ -84,8 +89,6 @@ export default async function Page({ params }) {
       <div className="">{map.description}</div>
       <br />
       <div className="lg:columns-2 lg:max-h-[400px] justify-center lg:gap-x-0">
-        {/*<Map pins={pins} />
-        <PinView pins={pins} />*/}
         <MapPinsView pins={pins} />
       </div>
 
