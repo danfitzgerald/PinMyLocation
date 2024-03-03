@@ -66,5 +66,5 @@ export default function Map({ pins, selectedPin }) {
     });
   }, [pins, selectedPin, geocoder, advancedMarker]);
   
-  return <div className="" style={{ height: "400px" }} ref={mapRef} />;
+  return <div className="h-[400px] w-full inline-block" ref={mapRef} />;
 }

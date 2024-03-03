@@ -6,6 +6,8 @@ import { useState } from "react";
 
 export default function MapPinsView({pins}) {
   const [selectedPin, setSelectedPin] = useState(0);
-  return <><Map pins={pins} selectedPin={selectedPin} setSelectedPin={setSelectedPin} />
-    <PinView pins={pins} selectedPin={selectedPin} setSelectedPin={setSelectedPin} /></>
+  return <>
+    <Map pins={pins} selectedPin={selectedPin} setSelectedPin={setSelectedPin} />
+    <PinView pins={pins} selectedPin={selectedPin} setSelectedPin={setSelectedPin} />
+  </>
 }

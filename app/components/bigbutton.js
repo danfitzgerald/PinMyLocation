@@ -1,6 +1,6 @@
 
-export const BIG_BUTTON_CLASS_NAME = "bg-blue-500 hover:bg-blue-600 duration-300";
-export const ALT_BIG_BUTTON_CLASS_NAME = "bg-yellow-500 hover:bg-yellow-600 duration-300";
+export const BIG_BUTTON_CLASS_NAME = "bg-blue-500 hover:bg-blue-600 duration-300 cursor-pointer";
+export const ALT_BIG_BUTTON_CLASS_NAME = "bg-yellow-500 hover:bg-yellow-600 duration-300 cursor-pointer";
 
 export default function BigButton({
   width = "auto",

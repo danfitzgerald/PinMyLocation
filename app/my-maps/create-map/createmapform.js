@@ -34,12 +34,12 @@ export default function CreateMapForm() {
     >
     <h1 className="text-xl font-bold">Create Map</h1>
     <div>
-      Map Name: <br/>
-      <input name="mapName" type="text" className="p-2 w-full" placeholder="Map Name" />
+      <label htmlFor="mapname_id">Map Name:</label>
+      <input id="mapname_id" name="mapName" type="text" className="p-2 w-full" placeholder="Map Name" />
       </div>
     <div>
-      Description: <br/>
-      <input name="description" type="text" className="p-2 w-full" placeholder="Description" />
+      <label htmlFor="description_id">Description:</label>
+      <input id="description_id" name="description" type="text" className="p-2 w-full" placeholder="Description" />
     </div>
     <div>
       <input id="ispublic_id" name="isPublic" type="checkbox" />
