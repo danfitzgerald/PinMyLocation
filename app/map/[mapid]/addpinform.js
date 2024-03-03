@@ -1,6 +1,6 @@
 "use client"
 
-import { createBigButtonClassName } from "@/app/components/bigbutton";
+import { BIG_BUTTON_CLASS_NAME, createBigButtonStyle } from "@/app/components/bigbutton";
 
 // TODO: secure this route.
 
@@ -57,7 +57,8 @@ export default function AddPinForm({ mapId }) {
       <input
         type="submit"
         value="Pin my location"
-        className={createBigButtonClassName({})}
+        className={BIG_BUTTON_CLASS_NAME}
+        style={createBigButtonStyle({})}
       />
     </form> 
   </>;

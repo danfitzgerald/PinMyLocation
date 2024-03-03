@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import BigButton, { createBigButtonClassName } from "@/app/components/bigbutton";
+import BigButton, { AltBigButton, BIG_BUTTON_CLASS_NAME, createBigButtonClassName, createBigButtonStyle } from "@/app/components/bigbutton";
 
 const CREATE_MAP_API = "/api/create-map";
 
@@ -42,14 +42,15 @@ export default function CreateMapForm() {
       <input name="description" type="text" className="p-2 w-full" placeholder="Description" />
     </div>
     <div>
-      <input name="isPublic" type="checkbox" /> Make map visible to anyone with a link.
+      <input id="ispublic_id" name="isPublic" type="checkbox" />
+      <label htmlFor="ispublic_id"> Make map visible to anyone with a link.</label>
     </div>
     
     <div className='flex flex-row justify-between mt-6'>
-      <BigButton type="button" bgcolor="#facc15" onClick={ () => history.back() }>
+      <AltBigButton type="button" onClick={ () => history.back() }>
         Go Back
-      </BigButton>
-      <input type="submit" className={createBigButtonClassName({})} value="Create New Map" />
+      </AltBigButton>
+      <input type="submit" style={createBigButtonStyle({})} className={BIG_BUTTON_CLASS_NAME} value="Create New Map" />
     </div>
   </form>
 }

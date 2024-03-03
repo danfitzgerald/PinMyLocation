@@ -1,9 +1,8 @@
 import Link from "next/link"
-import { createBigButtonClassName, createBigButtonStyle } from "./bigbutton"
+import { BIG_BUTTON_CLASS_NAME, createBigButtonStyle } from "./bigbutton"
 
 export default function BigLink({
   width="auto",
-  bgcolor="rgb(59 130 246)", 
   textcolor="white",
   px="2rem",
   py="1rem",
@@ -12,11 +11,11 @@ export default function BigLink({
   children, 
   href
 }) {
-  const className = createBigButtonStyle({ width, bgcolor, textcolor, px, py, my });
+  const bigStlye = createBigButtonStyle({ width, textcolor, px, py, my });
 
   return <Link 
-      className="bg-blue-500 hover:bg-blue-600 duration-300"
-      style={className}
+      className={BIG_BUTTON_CLASS_NAME}
+    style={bigStlye}
       href={href}
       prefetch={prefetch}
     >

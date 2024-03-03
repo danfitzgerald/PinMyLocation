@@ -1,6 +1,6 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import LoggedInNavBar from "@/app/components/loggedinnavbar";
-import { createBigButtonClassName } from "@/app/components/bigbutton";
+import { BIG_BUTTON_CLASS_NAME, createBigButtonStyle } from "@/app/components/bigbutton";
 
 export default withPageAuthRequired(async function Profile({ searchParams }) {
   return <div>
@@ -17,7 +17,7 @@ export default withPageAuthRequired(async function Profile({ searchParams }) {
             Display Name: <br />
             <input name="displayName" type="text" className="p-2 w-full" placeholder="Display Name" />
           </div>
-          <input type="submit" className={createBigButtonClassName({})} value="Update Profile" />
+          <input type="submit" className={BIG_BUTTON_CLASS_NAME} style={createBigButtonStyle({})} value="Update Profile" />
         </form>
       </div>
     </div>

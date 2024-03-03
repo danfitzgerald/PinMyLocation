@@ -9,6 +9,7 @@ export function NavBar({}) {
           <Image
             className="inline-block"
             src="/pushpin.png"
+            alt="PinMyLocation PushPin Logo"
             height={32}
             width={16}
           />

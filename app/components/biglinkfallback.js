@@ -1,4 +1,4 @@
-import { createBigButtonClassName, createBigButtonStyle } from "./bigbutton"
+import { createBigButtonStyle } from "./bigbutton"
 
 /* 
   Fallback component that is used in place of component
@@ -6,7 +6,6 @@ import { createBigButtonClassName, createBigButtonStyle } from "./bigbutton"
 */
 export default function BigLinkFallback({
   width = "auto",
-  bgcolor = "rgb(156 163 175)",
   textcolor = "white",
   px = "2rem",
   py = "1rem",
@@ -14,12 +13,11 @@ export default function BigLinkFallback({
   children,
   href
 }) {
-  // TODO: need to fix fallback color here using tailwind and 
-  // className prop (reference bigbutton.js).
-  const className = createBigButtonStyle({ width, bgcolor, textcolor, px, py, my });
+  const bigStlye = createBigButtonStyle({ width, textcolor, px, py, my });
 
   return <div
-    style={className}
+    className="bg-gray-400"
+    style={bigStlye}
   >
     {children}
   </div>

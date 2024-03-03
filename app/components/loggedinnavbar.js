@@ -14,6 +14,7 @@ export default function LoggedInNavBar() {
         <div>
           <Image
             src="/pushpin.png"
+            alt="PinMyLocation PushPin Logo"
             height={32}
             width={16}
             />

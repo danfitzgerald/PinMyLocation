@@ -1,21 +1,24 @@
 
+export const BIG_BUTTON_CLASS_NAME = "bg-blue-500 hover:bg-blue-600 duration-300";
+export const ALT_BIG_BUTTON_CLASS_NAME = "bg-yellow-500 hover:bg-yellow-600 duration-300";
+
 export default function BigButton({
   width = "auto",
-  bgcolor = "rgb(59 130 246)",
   textcolor = "white",
   px = "2rem",
   py = "1rem",
   my = "1rem",
+  className = { BIG_BUTTON_CLASS_NAME },
   type = "button",
   onClick = () => { },
   children,
 }) {
 
-  const className = createBigButtonStyle({width, bgcolor, textcolor, px, py, my});
+  const bigStyle = createBigButtonStyle({width, textcolor, px, py, my});
 
   return <button 
-      className="bg-blue-500 hover:bg-blue-600 duration-300"
-      style={className}
+      className={className}
+      style={bigStyle}
       onClick={onClick}
       type={type}
     >
@@ -24,21 +27,34 @@ export default function BigButton({
 
 }
 
-export function createBigButtonClassName({
-  width="auto",
-  bgcolor="blue-500",
-  textcolor="white",
-  px="8",
-  py="4",
+export function AltBigButton({
+  width = "auto",
+  textcolor = "white",
+  px = "2rem",
+  py = "1rem",
+  my = "1rem",
+  type = "button",
+  onClick = () => { },
+  children,
 }) {
-  return "w-auto rounded-sm bg-blue-500 text-white px-8 py-4 my-4 text-center shadow-md"
+  return <BigButton
+      className={ALT_BIG_BUTTON_CLASS_NAME}
+      width={width}
+      textcolor={textcolor}
+      px={px}
+      py={py}
+      my={my}
+      type={type}
+      onClick={onClick}
+    >
+      {children}
+    </BigButton>
 }
 
 /* Unfortunately tailwind cannot dynamically generate class files so we must
    generate style elements to dynamically style buttons */
 export function createBigButtonStyle({
   width = "auto",
-  bgcolor = "rgb(59 130 246)",
   textcolor = "white",
   px = "2rem",
   py = "1rem",
@@ -46,7 +62,6 @@ export function createBigButtonStyle({
 }) {
   return {
     width: width,
-    // backgroundColor: bgcolor,
     color: textcolor,
     paddingLeft: px,
     paddingRight: px,
