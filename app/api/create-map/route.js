@@ -12,6 +12,8 @@ export async function POST(req) {
   const description = formData.get('description');
   const isPublic = formData.get('isPublic') == "on";
 
+  // TODO: Validate form data.
+
   const userObj = await prisma.user.findUnique({
     where: {
       email: user.email

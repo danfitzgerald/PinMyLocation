@@ -9,6 +9,8 @@ export async function POST(req) {
   const accuracy    = formData.get('accuracy');
   const mapId       = formData.get('mapId');
 
+  // TODO: Validate form data.
+
   const session     = await getSession();
 
   if (!session || !session.user) { return Response.json({ success: false }); }
