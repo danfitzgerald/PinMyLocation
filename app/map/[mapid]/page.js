@@ -28,24 +28,27 @@ export default async function Page({ params }) {
     return <MapNotFound />;
   }
 
-  let isMapCreater = false;
+  const creator = await prisma.user.findUnique({
+    where: {
+      id: map.userId,
+    },
+    select: {
+      email: true,
+      name: true
+    }
+  });
 
   const session = await getSession();
-  let user = undefined;
-  if (session && session.user) {
-    user = session.user; 
-    const userObj = await prisma.user.findUnique({
-      where: {
-        email: user.email,
-      },
-      select: {
-        id: true,
-      }
-    });
-    isMapCreater = (userObj.id == map.userId)
+  let user = session?.user;
+
+  // Find if the authenticated user creted the map.
+  // Considered creater of email matches authenticated users email.
+  let isMapCreator = false;
+  if (user) {
+    isMapCreator = (creator.email == user.email)
   }
 
-  if (!map.public && !isMapCreater) {
+  if (!map.public && !isMapCreator) {
     return <MapNotFound />;
   }
 
@@ -84,16 +87,18 @@ export default async function Page({ params }) {
   return (<>
     { user ? <LoggedInNavBar /> : <NavBar/> }
   
-    <div className="mx-10 my-10">
+    <div className="mx-10 my-5">
       <div className="text-xl font-bold">{map.name}</div>
       <div className="">{map.description}</div>
+      <div className="text-sm">Created by: {creator.name}</div>
+      <div className="text-sm">{map.createdAt.toUTCString()}</div>
       <br />
       <div className="lg:columns-2 lg:max-h-[400px] justify-center lg:gap-x-0">
         <MapPinsView pins={pins} />
       </div>
 
       {
-        isMapCreater ? <div className="">
+        isMapCreator ? <div className="">
           <AddPinForm mapId={mapId}/>
         </div> : <></>
       }

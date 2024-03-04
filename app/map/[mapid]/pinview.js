@@ -34,9 +34,7 @@ function PinButton({pins, index, selected, onClick}) {
 }
 
 export default function PinView({ pins, selectedPin, setSelectedPin }) {
-  /* flex flex-row hover:bg-green-300 duration-200"*/
-  // console.log(setSelectedPin);
-  return <div className="max-h-[400px] overflow-y-auto">
+  return <div className="h-[400px] overflow-y-auto bg-gray-200 border-[1px]">
     {
       pins.map((pin, index) => <PinButton
         key={index}
