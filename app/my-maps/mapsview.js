@@ -4,10 +4,11 @@ import { redirect } from "next/navigation";
 
 function MapButton({ map }) {
   return <a href={"/map/" + map.id}>
-    <div className="py-3 px-2 border-[1px] border-gray-300 bg-gray-200 h-[100px]">
+    <div className="relative py-3 px-2 border-[1px] border-gray-300 hover:bg-gray-300 duration-300 bg-gray-200 h-[100px]">
       <div className="text-xl">{map.name == "" ? "(Untitled Map)" : map.name}</div>
       <div className="">{map.createdAt.toUTCString()}</div>
       <div className="">{map.public ? "Visible to anyone with a link" : "Only visible by you"}</div>
+      <div className="mx-5 text-xl text-bold h-full top-0 flex items-center absolute right-0"><div>&gt;</div></div>
     </div>
   </a>
 }
@@ -87,7 +88,7 @@ export default async function MapsView({ currentPage, itemsPerPage, email }) {
         {
           currentPage > 1 ? 
             <Link href={`?page=${Number(currentPage) - 1}`} scroll={false}>
-              <div className="flex h-10 w-10 justify-center items-center bg-gray-200 border-gray-500 rounded-md border-[1px]">
+              <div className="flex h-10 w-10 justify-center items-center bg-gray-200 hover:bg-gray-300 duration-300 border-gray-500 rounded-md border-[1px]">
                 <div>&lt;</div>
               </div>
             </Link>
@@ -99,7 +100,7 @@ export default async function MapsView({ currentPage, itemsPerPage, email }) {
           {
             pageNumbers.map((e, i) => 
               <Link key={"page-nav-" + e} href={"?page=" + e} scroll={false}>
-                <div className="flex h-10 w-10 justify-center items-center bg-gray-200 border-gray-500 rounded-md border-[1px]">
+                <div className="flex h-10 w-10 justify-center items-center bg-gray-200 hover:bg-gray-300 duration-300 border-gray-500 rounded-md border-[1px]">
                   <div>{e}</div>
                 </div>
               </Link> 
@@ -110,7 +111,7 @@ export default async function MapsView({ currentPage, itemsPerPage, email }) {
         {
           currentPage < pageCount ? 
           <Link href={`?page=${1 + Number(currentPage)}`} scroll={false}>
-            <div className="flex h-10 w-10 justify-center items-center bg-gray-200 border-gray-500 rounded-md border-[1px]">
+            <div className="flex h-10 w-10 justify-center items-center bg-gray-200 hover:bg-gray-300 duration-300 border-gray-500 rounded-md border-[1px]">
               <div>&gt;</div>
             </div>
           </Link>

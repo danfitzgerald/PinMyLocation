@@ -10,15 +10,12 @@ async function createNewMapSubmit(event, router) {
 
   const formData = new FormData(document.createmapform);
   let resJson;
-  for (let i = 0; i < 50; i++) {
-    const response = await fetch(CREATE_MAP_API, {
-      method: "POST",
-      body: formData,
-      cache: "no-cache",
-    });
-    resJson = await response.json();
-    console.log("complete: " + resJson.complete);
-  }
+  const response = await fetch(CREATE_MAP_API, {
+    method: "POST",
+    body: formData,
+    cache: "no-cache",
+  });
+  resJson = await response.json();
 
   if (resJson && resJson.complete && resJson.mapId) {
     router.replace("/map/" + resJson.mapId);

@@ -6,7 +6,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --navbar-background: #416D19;
+  /*--navbar-background: #416D19;*/
+  --navbar-background: black;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,8 +26,10 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));*/
-  color: #416D19;
-  background: #9BCF53;
+  /* color: #416D19; */
+  color: black;
+  /* background: #9BCF53;*/
+  background: lightgreen;
 }
 
 @layer utilities {

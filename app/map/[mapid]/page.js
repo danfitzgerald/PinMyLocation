@@ -87,7 +87,7 @@ export default async function Page({ params }) {
   return (<>
     { user ? <LoggedInNavBar /> : <NavBar/> }
   
-    <div className="mx-10 my-5">
+    <div className="mx-5  my-5">
       <div className="text-xl font-bold">{map.name}</div>
       <div className="">{map.description}</div>
       <div className="text-sm">Created by: {creator.name}</div>
