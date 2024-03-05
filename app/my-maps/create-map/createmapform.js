@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import BigButton, { AltBigButton, BIG_BUTTON_CLASS_NAME, createBigButtonClassName, createBigButtonStyle } from "@/app/components/bigbutton";
+import { AltBigButton, BIG_BUTTON_CLASS_NAME, createBigButtonStyle } from "@/app/components/bigbutton";
 
 const CREATE_MAP_API = "/api/create-map";
 
@@ -9,13 +9,13 @@ async function createNewMapSubmit(event, router) {
   event.preventDefault();
 
   const formData = new FormData(document.createmapform);
-
+  let resJson;
   const response = await fetch(CREATE_MAP_API, {
     method: "POST",
     body: formData,
+    cache: "no-cache",
   });
-
-  const resJson = await response.json();
+  resJson = await response.json();
 
   if (resJson && resJson.complete && resJson.mapId) {
     router.replace("/map/" + resJson.mapId);

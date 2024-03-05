@@ -5,7 +5,6 @@ import { getSession } from "@auth0/nextjs-auth0";
 
 // Update profile server action.
 export default async function updateProfile(prevState, formData) {
-  "use server"
 
   // TODO: May need to revalidate some routes after updating profile.
   // '/my-maps' route and maybe '/map/[mapid]' routes.
