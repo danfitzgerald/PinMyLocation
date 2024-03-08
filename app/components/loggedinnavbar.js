@@ -17,7 +17,7 @@ export default function LoggedInNavBar() {
     setNavDrawerOpen(!navDrawerOpen);
   }
 
-  return (<nav className="bg-[var(--navbar-background)] text-[#FFF67E] font-bold shadow-md py-2 px-10">
+  return (<nav className="bg-[var(--navbar-background)] text-[#FFF67E] font-bold shadow-md py-2 px-5 md:px-10">
     <div className="flex items-center justify-between">
       <div className="w-1/4">
         <Link href="/" className="flex flex-row items-center gap-x-2">
