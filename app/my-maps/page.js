@@ -21,14 +21,16 @@ export default withPageAuthRequired(async function Profile({ searchParams }) {
 
   return <div>
     <LoggedInNavBar />
-    <div className="flex flex-col gap-y-2 mt-6 lg:mx-10">
-      <div className="text-xl font-bold mb-6">
-        {displayName}&apos;s maps:
+    <div className="flex flex-col gap-y-2 mt-6 mx-4 lg:mx-10">
+      <div className="flex flex-row items-center justify-between">
+        <div className="text-xl font-bold">
+          {displayName}&apos;s maps:
+        </div>
+        
+        <BigLink href="/my-maps/create-map" py="12px" px="20px">
+          + New Map
+        </BigLink>
       </div>
-      
-      <BigLink href="/my-maps/create-map">
-        Create New Map
-      </BigLink>
       <div className='w-full'>
         <MapsView currentPage={currentPage} itemsPerPage={itemsPerPage} email={user.email}/>
       </div>
