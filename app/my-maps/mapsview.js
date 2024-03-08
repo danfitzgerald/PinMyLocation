@@ -100,7 +100,9 @@ export default async function MapsView({ currentPage, itemsPerPage, email }) {
           {
             pageNumbers.map((e, i) => 
               <Link key={"page-nav-" + e} href={"?page=" + e} scroll={false}>
-                <div className="flex h-10 w-10 justify-center items-center bg-gray-200 hover:bg-gray-300 duration-300 border-gray-500 rounded-md border-[1px]">
+                <div 
+                  className={`hidden 2s:flex h-10 w-10 justify-center items-center ${currentPage == e ? "bg-blue-600 text-white" : "bg-gray-200 hover:bg-gray-300"}  duration-300 border-gray-500 rounded-md border-[1px]`}
+                >
                   <div>{e}</div>
                 </div>
               </Link> 

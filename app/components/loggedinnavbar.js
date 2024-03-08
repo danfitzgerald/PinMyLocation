@@ -61,7 +61,7 @@ export default function LoggedInNavBar() {
       </div>
     </div>
     {/* Mobile nav drawer. */}
-    <div className={(navDrawerOpen ? "transition-height duration-500 ease-in-out h-[180px] overflow-hidden" : "transition-height duration-500 ease-in-out h-0 overflow-hidden")}>
+    <div className={(navDrawerOpen ? "transition-height duration-500 ease-in-out h-[180px] overflow-hidden lg:hidden" : "transition-height duration-500 ease-in-out h-0 overflow-hidden")}>
       <NavDrawer navItems={navItems} />
     </div>
   </nav>)
