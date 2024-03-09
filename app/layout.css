@@ -1,0 +1,7 @@
+main {
+  background-image: url(/pexels-catarina-sousa-68704.jpg),
+      linear-gradient(180deg, lightgreen, transparent);
+    background-size: cover;
+    background-blend-mode: luminosity;
+    
+}
