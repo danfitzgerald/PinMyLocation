@@ -1,7 +1,7 @@
-main {
+.home-background {
   background-image: url(/pexels-catarina-sousa-68704.jpg),
-      linear-gradient(180deg, lightgreen, transparent);
+      radial-gradient(green, transparent);
     background-size: cover;
     background-blend-mode: luminosity;
-    
+  
 }

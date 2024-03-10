@@ -94,7 +94,7 @@ export default async function Page({ params }) {
       <div className="text-sm">{map.createdAt.toUTCString()}</div>
       <br />
       <div className="lg:columns-2 lg:max-h-[400px] justify-center lg:gap-x-0">
-        <MapPinsView pins={pins} />
+        <MapPinsView pins={pins} mapId={mapId} canModify={isMapCreator} />
       </div>
 
       {
