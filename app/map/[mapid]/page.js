@@ -4,6 +4,7 @@ import { getSession } from '@auth0/nextjs-auth0';
 import LoggedInNavBar from "@/app/components/loggedinnavbar.js";
 import { NavBar } from "@/app/components/navbar.js";
 import MapPinsView from "./mappinsview.js";
+import Description from "./description.js";
 
 export const revalidate = 10;
 
@@ -87,13 +88,16 @@ export default async function Page({ params }) {
   return (<>
     { user ? <LoggedInNavBar /> : <NavBar/> }
   
-    <div className="mx-5  my-5">
-      <div className="text-xl font-bold">{map.name}</div>
-      <div className="">{map.description}</div>
-      <div className="text-sm">Created by: {creator.name}</div>
-      <div className="text-sm">{map.createdAt.toUTCString()}</div>
-      <br />
-      <div className="lg:columns-2 lg:max-h-[400px] justify-center lg:gap-x-0">
+    <div className="mx-5 my-5">
+      <Description 
+        mapName={map.name} 
+        mapDescription={map.description} 
+        mapCreator={creator.name}
+        mapCreation={map.createdAt}
+        mapId={mapId}
+        mapPublic={map.public}
+        canEdit={isMapCreator} />
+      <div className="lg:columns-2 lg:max-h-[400px] justify-center lg:gap-x-0 mt-5">
         <MapPinsView pins={pins} mapId={mapId} canModify={isMapCreator} />
       </div>
 
