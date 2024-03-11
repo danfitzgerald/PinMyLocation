@@ -45,7 +45,7 @@ export default function AddPinForm({ mapId }) {
       onSubmit={captureLocationAndSubmit}
       className="flex flex-col gap-y-2 bg-green-400 p-4 my-6"
       >
-      <div className="text-xl font-bold">Create new Pin</div>
+      <div className="text-xl font-bold">Create new pin</div>
       <label htmlFor="description-id">Name:</label>
       <input 
         id="description-id"
