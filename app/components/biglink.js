@@ -15,7 +15,7 @@ export default function BigLink({
 
   return <Link 
       className={BIG_BUTTON_CLASS_NAME}
-    style={bigStlye}
+      style={bigStlye}
       href={href}
       prefetch={prefetch}
     >

@@ -8,7 +8,7 @@ export default function BigButton({
   px = "2rem",
   py = "1rem",
   my = "1rem",
-  className = { BIG_BUTTON_CLASS_NAME },
+  className = BIG_BUTTON_CLASS_NAME,
   type = "button",
   onClick = () => { },
   children,

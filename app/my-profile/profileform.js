@@ -1,7 +1,7 @@
 'use client'
 import { BIG_BUTTON_CLASS_NAME, createBigButtonStyle } from "@/app/components/bigbutton";
 import { useFormState } from 'react-dom'
-import updateProfile from "@/app/actions";
+import { updateProfile } from "@/app/actions";
 
 export default function ProfileForm({ displayName }) {
   const initialState = undefined;
