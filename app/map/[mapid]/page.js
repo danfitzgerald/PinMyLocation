@@ -5,6 +5,7 @@ import LoggedInNavBar from "@/app/components/loggedinnavbar.js";
 import { NavBar } from "@/app/components/navbar.js";
 import MapPinsView from "./mappinsview.js";
 import Description from "./description.js";
+import DeleteMapForm from "./deletemapform.js";
 
 export const revalidate = 10;
 
@@ -104,6 +105,7 @@ export default async function Page({ params }) {
       {
         isMapCreator ? <div className="">
           <AddPinForm mapId={mapId}/>
+          <DeleteMapForm mapId={mapId} />
         </div> : <></>
       }
       

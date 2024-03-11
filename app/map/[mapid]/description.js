@@ -118,7 +118,13 @@ export default function Description({
       <div className="inline text-xl font-bold">{mapName}</div>
       { canEdit ? <EditButton setEditMode={setEditMode} /> : <></> }
     </div>
+    {
+      canEdit ?
+        <div className="text-sm italic">({mapPublic ? "This map is visible to anyone with a link" : "This map is not public"})</div>
+        : <></>
+    }
     <div className="">{mapDescription}</div>
+    
     <div className="text-sm">Created by: {mapCreator}</div>
     <div className="text-sm">{mapCreation.toUTCString()}</div>
   </>
