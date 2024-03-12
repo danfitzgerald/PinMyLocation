@@ -2,6 +2,7 @@ import { getSession } from '@auth0/nextjs-auth0';
 import { Suspense } from 'react';
 import BigLink from '@/app/components/biglink';
 import BigLinkFallback from '@/app/components/biglinkfallback';
+import prisma from '@/lib/prisma';
 
 async function AwaitButton() {
   const session = await getSession();
