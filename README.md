@@ -1,3 +1,5 @@
+[Check out my portfolio @ dfitzgerald.net!](https://www.dfitzgerald.net/)
+
 # PinMyLocation
 An app allowing you to share location updates with others.
 
@@ -13,7 +15,6 @@ PinMyLocation is a Web Application developed for my portfolio that allows users 
  - Tailwind CSS
  - Prisma (Postgresql)
  - Auth0
+ - Google Maps API
  - HTML/CSS/JS
  - Production deployed on Vercel
-
-[Check out my portfolio @ dfitzgerald.net!](https://www.dfitzgerald.net/)
