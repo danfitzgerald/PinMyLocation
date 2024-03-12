@@ -56,7 +56,7 @@ export default async function Home() {
         Device Mockup created from <a className="hover:underline text-blue-500" href="https://deviceframes.com/templates/google-pixel-6">Google Pixel 6 mockups</a>
       </ScreenshotCard>
 
-      <ScreenshotCard index={++index} projectTitle='Display Name' width={492 / 2} height={1054 / 2} imagePath='/_images/screenshots/3.png'>
+      <ScreenshotCard index={++index} projectTitle='Display Name' width={492 / 2} height={1054 / 2} imagePath='/_images/screenshots/4.png'>
         By default PinMyLocation will use the name associated with the account provider you signed
         in with (Google,...), if you signed up using the email and password registration option by
         default PinMyLocation will use your email address as your display name. You can change your
