@@ -8,7 +8,7 @@ async function AwaitButton() {
   const session = await getSession();
   const user = session ? session.user : undefined;
 
-  const { name } = user ? await prisma.user.findUnique({
+  let { name } = user ? await prisma.user.findUnique({
     where: {
       email: user.email,
     },
