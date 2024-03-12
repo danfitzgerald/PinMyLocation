@@ -17,7 +17,7 @@ async function AwaitButton() {
     }
   }) : { name: undefined };
 
-  name = name ? name : user.email;
+  name = name ? name : user?.email;
 
   return <BigLink
     width="20rem"
